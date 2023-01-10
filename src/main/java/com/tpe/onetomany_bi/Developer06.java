@@ -1,12 +1,12 @@
-package com.tpe.onetomany_uni;
+package com.tpe.onetomany_bi;
 
-
+import com.tpe.onetomany_uni.Company2;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "t_developer5")
-public class Developer05 {
+@Table(name = "t_developer6")
+public class Developer06 {
 
     @Id
     private Long id;
@@ -19,14 +19,14 @@ public class Developer05 {
 
     private String branch;
 
-    //Creating Company variable in order to see devs' company
     @ManyToOne
-    private Company2 company;
+    @JoinColumn
+    private Company3 company;
 
-    public Developer05() {
+    public Developer06() {
     }
 
-    public Developer05(Long id, String name, String email, String branch, Company2 company) {
+    public Developer06(Long id, String name, String email, String branch, Company3 company) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -66,11 +66,11 @@ public class Developer05 {
         this.branch = branch;
     }
 
-    public Company2 getCompany() {
+    public Company3 getCompany() {
         return company;
     }
 
-    public void setCompany(Company2 company) {
+    public void setCompany(Company3 company) {
         this.company = company;
     }
 

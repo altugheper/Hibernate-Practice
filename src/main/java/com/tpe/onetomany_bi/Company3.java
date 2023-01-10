@@ -1,11 +1,13 @@
-package com.tpe.onetomany_uni;
+package com.tpe.onetomany_bi;
+
+import com.tpe.onetomany_uni.Developer05;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Company2 {
+public class Company3 {
 
     @Id
     private Long id;
@@ -15,22 +17,21 @@ public class Company2 {
 
     // If we want to see devs working in the company
     // Why Set? Because it does not allow repetitive data
-    @OneToMany
-    @JoinColumn(name = "company_id")
-    private Set<Developer05> devs = new HashSet<>();
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
+    private Set<Developer06> devs = new HashSet<>();
 
-    public Set<Developer05> getDevs() {
+    public Set<Developer06> getDevs() {
         return devs;
     }
 
-    public void setDevs(Set<Developer05> devs) {
+    public void setDevs(Set<Developer06> devs) {
         this.devs = devs;
     }
 
-    public Company2() {
+    public Company3() {
     }
 
-    public Company2(Long id, String companyName) {
+    public Company3(Long id, String companyName) {
         this.id = id;
         this.companyName = companyName;
     }

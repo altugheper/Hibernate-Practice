@@ -1,12 +1,14 @@
-package com.tpe.onetomany_uni;
+package com.tpe.manytomany;
 
-
+import com.tpe.onetomany_bi.Company3;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "t_developer5")
-public class Developer05 {
+@Table(name = "t_developer7")
+public class Developer07 {
 
     @Id
     private Long id;
@@ -19,19 +21,17 @@ public class Developer05 {
 
     private String branch;
 
-    //Creating Company variable in order to see devs' company
-    @ManyToOne
-    private Company2 company;
+    @ManyToMany(mappedBy = "developers")
+    private Set<Project> projects = new HashSet<>();
 
-    public Developer05() {
+    public Developer07() {
     }
 
-    public Developer05(Long id, String name, String email, String branch, Company2 company) {
+    public Developer07(Long id, String name, String email, String branch) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.branch = branch;
-        this.company = company;
     }
 
     public Long getId() {
@@ -66,12 +66,12 @@ public class Developer05 {
         this.branch = branch;
     }
 
-    public Company2 getCompany() {
-        return company;
+    public Set<Project> getProjects() {
+        return projects;
     }
 
-    public void setCompany(Company2 company) {
-        this.company = company;
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class Developer05 {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", branch='" + branch + '\'' +
-                ", company=" + company +
+                ", projects=" + projects +
                 '}';
     }
 }
